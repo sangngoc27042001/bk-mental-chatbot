@@ -11,6 +11,10 @@ from langchain.docstore.document import Document
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
+import pickle
+
+openai_api_key = pickle.load(open('config.pkl' , 'rb'))
+openai_api_key = openai_api_key.get('OpenAIAPIkey')
 
 # 1. LOAD RETRIEVER
 
@@ -24,7 +28,7 @@ vectordb = FAISS.load_local("FAISS_vectordb", hfEmbedding)
 retriever = vectordb.as_retriever()
 
 # 2. DEFINE LLM
-llm = ChatOpenAI(temperature=0, openai_api_key="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")
+llm = ChatOpenAI(temperature=0, openai_api_key = openai_api_key)
 
 # 3. DEFINE NAVIGATOR
 def navigator(inputs):
