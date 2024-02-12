@@ -10,3 +10,5 @@ Intall all the libraries:
 pip install -r requirements.txt
 ```
 
+## Task
+- Edit the class ChatSession to interact with mongodb atlas
